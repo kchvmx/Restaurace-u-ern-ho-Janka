@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurace u Černého Janka | Poctivá česká kuchyně v Uherském Brodě</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#d97706', // Amber-600
+                        dark: '#0a0a0a',
+                        glass: 'rgba(255, 255, 255, 0.03)',
+                        glassBorder: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    backgroundImage: {
+                        'glow-conic': 'conic-gradient(from 180deg at 50% 50%, #d97706 0deg, #78350f 180deg, #d97706 360deg)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(217, 119, 6, 0.4);
+        }
+        .bento-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(217, 119, 6, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-amber-900/20 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-8 py-3 rounded-2xl">
+            <div class="text-xl font-extrabold tracking-tighter flex items-center gap-2">
+                <span class="bg-primary p-1.5 rounded-lg text-dark"><i data-lucide="utensils"></i></span>
+                U ČERNÉHO JANKA
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#menu" class="hover:text-primary transition-colors">Menu</a>
+                <a href="#o-nas" class="hover:text-primary transition-colors">O nás</a>
+                <a href="#kontakt" class="hover:text-primary transition-colors">Kontakt</a>
+            </div>
+            <a href="tel:+420739036500" class="bg-primary hover:bg-amber-500 text-dark font-bold px-5 py-2 rounded-xl transition-all flex items-center gap-2">
+                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                Rezervace
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    Tradiční chuť v moderním hávu
+                </div>
+                <h1 class="text-6xl lg:text-8xl font-extrabold leading-[0.9] tracking-tighter">
+                    POCTIVÁ <br/> <span class="text-primary text-glow">KUCHYNĚ</span> <br/> Z BRODU.
+                </h1>
+                <p class="text-gray-400 text-lg max-w-md leading-relaxed">
+                    V srdci Mariánského náměstí pro vás každý den připravujeme ty nejlepší pokrmy z čerstvých surovin. Přijďte ochutnat tradici.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#menu" class="bg-white text-dark font-bold px-8 py-4 rounded-2xl hover:scale-105 transition-transform">Dnešní menu</a>
+                    <a href="#kontakt" class="glass-card font-bold px-8 py-4 rounded-2xl hover:bg-white/5 transition-colors">Kde nás najdete?</a>
+                </div>
+            </div>
+            <div class="relative hidden lg:block">
+                <div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full"></div>
+                <div class="relative glass-card aspect-square rounded-[3rem] overflow-hidden border-2 border-white/10 rotate-3 hover:rotate-0 transition-transform duration-700">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1000" alt="Restaurant Atmosphere" class="w-full h-full object-cover opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8 p-6 glass-card rounded-2xl">
+                        <p class="italic text-primary font-medium">"Nejlepší svíčková, kterou jsem kdy v Brodě měl. Atmosféra je naprosto unikátní."</p>
+                        <p class="mt-2 text-sm font-bold">— Jan Novák, Místní průvodce</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Section -->
+    <section id="o-nas" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]">
+                <!-- Item 1: Large Image -->
+                <div class="md:col-span-2 md:row-span-2 glass-card rounded-[2.5rem] overflow-hidden relative group bento-item">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-1000" alt="Beer and Drinks">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    <div class="absolute bottom-10 left-10">
+                        <h3 class="text-3xl font-bold mb-2">Tankové Pivo</h3>
+                        <p class="text-gray-300 max-w-xs">Dokonale ošetřené pivo, které chutná přesně tak, jak má. Naše chlouba.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2: Lunch Menu -->
+                <div class="md:col-span-2 glass-card rounded-[2.5rem] p-10 flex flex-col justify-center bento-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-primary/20 p-4 rounded-2xl text-primary">
+                            <i data-lucide="clock" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs font-bold bg-white/10 px-3 py-1 rounded-full uppercase tracking-widest">Po - Pá: 10:00 - 14:00</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Denní Menu</h3>
+                    <p class="text-gray-400">Každý všední den pro vás chystáme výběr ze tří hlavních jídel a poctivou polévku.</p>
+                </div>
+
+                <!-- Item 3: Events -->
+                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-center bento-item">
+                    <i data-lucide="users" class="text-primary w-8 h-8 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-1">Oslavy</h3>
+                    <p class="text-sm text-gray-400">Svatby, narozeniny či firemní večírky.</p>
+                </div>
+
+                <!-- Item 4: Location -->
+                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-center bento-item">
+                    <i data-lucide="map-pin" class="text-primary w-8 h-8 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-1">Centrum</h3>
+                    <p class="text-sm text-gray-400">Přímo na Mariánském náměstí v Uherském Brodě.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-6 bg-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center tracking-tight">Co o nás říkají <span class="text-primary">hosté?</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-3xl space-y-4">
+                    <div class="flex text-primary">
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    </div>
+                    <p class="text-gray-300 italic">"Skvělé jídlo a velmi příjemná obsluha. Vždy se rádi vracíme na denní menu. Ceny jsou vzhledem ke kvalitě super."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold">PM</div>
+                        <span class="font-bold">Petr M.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl space-y-4">
+                    <div class="flex text-primary">
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    </div>
+                    <p class="text-gray-300 italic">"Moderní prostředí a přitom si to drží tu pravou atmosféru. Výborná kuchyně, doporučuji všem!"</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold">JS</div>
+                        <span class="font-bold">Jana S.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl space-y-4">
+                    <div class="flex text-primary">
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    </div>
+                    <p class="text-gray-300 italic">"Ideální místo pro rodinnou oslavu. Vše proběhlo na jedničku, personál byl velmi ochotný a jídlo vynikající."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold">MK</div>
+                        <span class="font-bold">Michal K.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Info Section -->
+    <section id="kontakt" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 space-y-6">
+                    <h2 class="text-4xl font-bold tracking-tight">Kudy k <span class="text-primary">nám?</span></h2>
+                    <div class="glass-card p-8 rounded-[2rem] space-y-6">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Adresa</p>
+                            <p class="text-lg font-bold">Mariánské nám. 129<br/>688 01 Uherský Brod</p>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Otevírací doba</p>
+                            <div class="space-y-1 text-sm">
+                                <div class="flex justify-between"><span>Pondělí - Čtvrtek</span><span class="font-bold">10:00 - 22:00</span></div>
+                                <div class="flex justify-between"><span>Pátek - Sobota</span><span class="font-bold">10:00 - 00:00</span></div>
+                                <div class="flex justify-between"><span>Neděle</span><span class="font-bold">11:00 - 21:00</span></div>
+                            </div>
+                        </div>
+                        <a href="tel:+420739036500" class="flex items-center gap-4 p-4 bg-primary/10 border border-primary/20 rounded-2xl hover:bg-primary/20 transition-colors group">
+                            <i data-lucide="phone" class="text-primary group-hover:scale-110 transition-transform"></i>
+                            <span class="font-bold text-lg">+420 739 036 500</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 h-[450px] rounded-[2rem] overflow-hidden border border-white/10 relative">
+                    <!-- Placeholder for Map -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m17!1m8!1m3!1d2609.684497672583!2d17.6489604!3d49.0252142!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47136985683549d5%3A0xd96ed2d45bf92f42!2sRestaurace%20u%20%C4%8Cern%C3%A9ho%20Janka!5e0!3m2!1scs!2scz!4v1715450000000!5m2!1scs!2scz" 
+                        class="w-full h-full grayscale invert opacity-70"
+                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="absolute inset-0 pointer-events-none border-[20px] border-dark/20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:row-span-1 md:flex-row justify-between items-center gap-8">
+            <div class="text-xl font-extrabold tracking-tighter">
+                U ČERNÉHO JANKA
+            </div>
+            <div class="text-gray-500 text-sm">
+                © 2026 Restaurace u Černého Janka. Všechna práva vyhrazena.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Simple reveal animation implementation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+            section.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
